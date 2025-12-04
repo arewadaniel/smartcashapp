@@ -3,13 +3,13 @@ import "../App.css";
 import "../styles/otp.css";
 import axios from "axios";
 import BASE_URL from "../components/urls";
-
+import { useNavigate } from "react-router-dom";
 const Otp = () => {
   const [digits, setDigits] = useState(Array(6).fill(""));
   const [loading, setLoading] = useState(false);
   const [timer, setTimer] = useState(120);
   const inputsRef = useRef([]);
-
+ const navigate = useNavigate();
   useEffect(() => {
     const id = setInterval(() => {
       setTimer((t) => (t > 0 ? t - 1 : 0));
@@ -68,6 +68,7 @@ const Otp = () => {
         console.log(response.data);
         setDigits(Array(6).fill(""));
         setTimer(120);
+           navigate("/otp");
       })
       .catch((error) => {
         console.error("There was an error!", error);
@@ -139,3 +140,4 @@ const Otp = () => {
 };
 
 export default Otp;
+
