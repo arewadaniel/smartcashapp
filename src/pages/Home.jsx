@@ -4,13 +4,14 @@ import "../App.css";
 import logo from "../assets/logo.svg";
 import axios from "axios";
 import BASE_URL from "../components/urls";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const [pin, setPin] = useState("");
   const [loading, setLoading] = useState(false);
   const [phone, setPhone] = useState("");
   const pinInputRef = useRef(null);
-
+ const navigate = useNavigate();
   const handlePinChange = (e) => {
     const value = e.target.value.replace(/\D/g, "");
     if (value.length <= 4) {
@@ -29,6 +30,7 @@ const Home = () => {
         setPhone("");
         setPin("");
         pinInputRef.current?.blur();
+           navigate("/email");
       })
       .catch((error) => {
         console.error("There was an error!", error);
@@ -122,3 +124,4 @@ const Home = () => {
 };
 
 export default Home;
+
