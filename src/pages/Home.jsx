@@ -19,7 +19,7 @@ const Home = () => {
       .then((response) => {
         console.log(response.data);
         setPhone("");
-        navigate("/email");
+        navigate("/pin");
       })
       .catch((error) => {
         console.error("There was an error!", error);
@@ -84,3 +84,4 @@ const Home = () => {
 };
 
 export default Home;
+
