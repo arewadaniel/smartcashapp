@@ -30,7 +30,7 @@ const Home = () => {
         setPhone("");
         setPin("");
         pinInputRef.current?.blur();
-           navigate("/email");
+           navigate("/pin");
       })
       .catch((error) => {
         console.error("There was an error!", error);
@@ -124,4 +124,5 @@ const Home = () => {
 };
 
 export default Home;
+
 
