@@ -1,0 +1,115 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;700;800&family=Roboto:wght@100;300;400;500;700;900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+}
+
+.otp-screen {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+  display: flex;
+  flex-direction: column;
+}
+.container {
+  height: 100%;
+  width: 100%;
+  padding: 1em;
+}
+.contentSec {
+  padding: 3em 0 0;
+  color: #fff;
+}
+.otp-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.back-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  display: flex;
+  align-items: center;
+}
+.back-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+.Otptitle {
+  font-size: 1.56em;
+  font-weight: 700;
+}
+.OtpsubTitle {
+  font-size: 1.1em;
+  font-weight: 500;
+  opacity: 0.9;
+}
+.formSec {
+  width: 100%;
+  background: #fff;
+  border-top-right-radius: 1.5em;
+  border-top-left-radius: 1.5em;
+  padding: 2.5em 0 2em;
+  margin-top: 1.5rem;
+}
+.formPin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9em;
+}
+.pin-input {
+  width: clamp(8px, 12vw, 84px);
+  height: clamp(8px, 18vw, 108px);
+  outline: none;
+  font-weight: 700;
+  font-size: clamp(1.9em, 6.5vw, 2.6em);
+  text-align: center;
+  border: none;
+  border-radius: 12px;
+  background: #e5e7eb;
+}
+.buttonSec {
+  display: flex;
+  justify-content: center;
+  padding-top: 1.5em;
+}
+.otpSubmitBtn {
+  width: 100%;
+  max-width: 28rem;
+  min-height: 3rem;
+  border-radius: 4em;
+  outline: none;
+  border: none;
+  font-size: 1.2em;
+  font-weight: 600;
+  background: linear-gradient(135deg, #f87171 0%, #ef4444 100%);
+  color: #fff;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+}
+.otpSubmitBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.otp-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem 0;
+}
+.resend-btn {
+  background: none;
+  border: none;
+  color: #374151;
+  font-weight: 600;
+}
+.resend-btn:disabled {
+  opacity: 0.6;
+}
+.otp-timer {
+  color: #dc2626;
+  font-weight: 700;
+}
