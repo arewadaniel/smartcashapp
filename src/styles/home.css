@@ -261,8 +261,7 @@ button.homeBtn {
   align-items: center;
   padding-left: 1em;
 }
-.field-value,
-.field-pin {
+.field-value {
   flex: 1;
   height: 50px;
   background: #5a1e20;
@@ -289,53 +288,6 @@ button.homeBtn {
 }
 .field-input::placeholder {
   color: rgba(255, 255, 255, 0.7);
-}
-.pin-dots {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-.dots-container {
-  display: flex;
-  gap: 0.5rem;
-}
-.dot {
-  width: 0.75rem;
-  height: 0.75rem;
-  border-radius: 50%;
-  border: 2px solid #fff;
-}
-.dot.filled {
-  background: #fff;
-}
-.dot.empty {
-  background: transparent;
-}
-.forgot-btn {
-  color: #fff;
-  font-size: 0.875rem;
-  text-decoration: underline;
-  margin-left: 1rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-.pin-visible-input {
-  flex: 1;
-  height: 100%;
-  background: transparent;
-  border: none;
-  outline: none;
-  color: #fff;
-  font-size: 1.15rem;
-  font-weight: 700;
-  letter-spacing: 0.35rem;
-  caret-color: #fff;
-}
-.pin-visible-input::placeholder {
-  color: rgba(255, 255, 255, 0.7);
-  font-weight: 500;
-  letter-spacing: normal;
 }
 .bottom-section {
   margin-top: auto;
